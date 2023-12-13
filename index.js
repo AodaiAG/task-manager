@@ -12,7 +12,8 @@ app.use(bodyParser.json());
 mongoose.connect('mongodb://localhost:27017/taskDB', { useNewUrlParser: true, useUnifiedTopology: true });
 
 // Routes
-app.use('/user', userRoutes); // User routes for registration, login, etc.
+app.use('/user', userRoutes); // User routes for registration, login, etc.,kk 
+// just trying out
 app.use('/tasks', authMiddleware.verifyToken, taskRoutes); // Task routes requiring authentication
 
 // Start server
