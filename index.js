@@ -11,10 +11,12 @@ app.use(bodyParser.json());
 // Connect to MongoDB using mongoose
 mongoose.connect('mongodb://localhost:27017/taskDB', { useNewUrlParser: true, useUnifiedTopology: true });
 
-// Routes
-app.use('/user', userRoutes); // User routes for registration, login, etc.,kk 
+// Middleware setup
+app.use(authMiddleware.verifyToken); // This line is critical to apply the middleware globally
 
-app.use('/tasks', authMiddleware.verifyToken, taskRoutes); // Task routes requiring authentication
+// Routes
+app.use('/user', userRoutes);
+app.use('/tasks', taskRoutes);
 
 // Start server
 const PORT = process.env.PORT || 3000;
