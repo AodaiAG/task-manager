@@ -7,7 +7,7 @@ const jwt = require('jsonwebtoken');
 function verifyToken(req, res, next)
  {
  
-  if (req.originalUrl.startsWith('/api-docs/'))
+  if (req.originalUrl.startsWith('/api-docs/')||req.originalUrl.startsWith('/user/') )
    {
     // Skip authentication for the Swagger UI route
     return next();

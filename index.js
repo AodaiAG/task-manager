@@ -17,9 +17,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 
 // Middleware setup
-app.use(authMiddleware.verifyToken); // This line is critical to apply the middleware globally
-
-
+app.use(authMiddleware.verifyToken); 
 
 // Serve Swagger UI
 const swaggerUi = require('swagger-ui-express');

@@ -33,8 +33,10 @@ async function register(req, res)
 }
 
 // Login user and generate token
-async function login(req, res) {
-  try {
+async function login(req, res) 
+{
+  try 
+  {
     const { username, password } = req.body; // Assuming username and password are sent in the request body
 
     // Check if the user exists
