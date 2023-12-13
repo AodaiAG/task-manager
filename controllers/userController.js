@@ -6,12 +6,14 @@ const User = require('../models/userModel');
 // Register a new user
 async function register(req, res) 
 {
-  try {
+  try
+   {
     const { username, password } = req.body; // Assuming username and password are sent in the request body
 
     // Check if the user already exists
     const existingUser = await User.findOne({ username });
-    if (existingUser) {
+    if (existingUser) 
+    {
       return res.status(400).json({ message: 'User already exists' });
     }
 

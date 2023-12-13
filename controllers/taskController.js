@@ -17,7 +17,8 @@ async function getAllTasks(req, res)
 }
 
 // Create a new task
-async function createTask(req, res) {
+async function createTask(req, res) 
+{
   try {
     const { title, description, priority } = req.body; // Assuming title, description, priority are sent in the request body
 
