@@ -1,0 +1,1 @@
+//  Defines the schema for tasks, specifying the structure of task-related data stored in the database.
