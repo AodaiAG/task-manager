@@ -6,8 +6,12 @@ const jwt = require('jsonwebtoken');
 // Middleware function to verify JWT token
 function verifyToken(req, res, next)
  {
-  console.log(req.originalUrl)
-
+ 
+  if (req.originalUrl.startsWith('/api-docs/'))
+   {
+    // Skip authentication for the Swagger UI route
+    return next();
+  }
   // Get the token from the request headers, query parameters, or cookies
   const token = req.headers['authorization'];
   
