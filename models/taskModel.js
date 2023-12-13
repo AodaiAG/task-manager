@@ -3,8 +3,10 @@
 const mongoose = require('mongoose');
 
 // Define the Task Schema
-const taskSchema = new mongoose.Schema({
-  title: {
+const taskSchema = new mongoose.Schema
+({
+  title:
+   {
     type: String,
     required: true,
   },
@@ -17,7 +19,8 @@ const taskSchema = new mongoose.Schema({
     enum: ['Low', 'Medium', 'High'],
     default: 'Medium',
   },
-  createdAt: {
+  createdAt: 
+  {
     type: Date,
     default: Date.now,
   },

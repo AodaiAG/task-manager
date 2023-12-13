@@ -19,7 +19,8 @@ async function getAllTasks(req, res)
 // Create a new task
 async function createTask(req, res) 
 {
-  try {
+  try 
+  {
     const { title, description, priority } = req.body; // Assuming title, description, priority are sent in the request body
 
     // Create a new task
@@ -34,7 +35,8 @@ async function createTask(req, res)
 }
 
 // Update a task by ID
-async function updateTask(req, res) {
+async function updateTask(req, res) 
+{
   try {
     const taskId = req.params.taskId; // Get the task ID from the request parameters
     const { title, description, priority } = req.body; // Assuming title, description, priority are sent in the request body

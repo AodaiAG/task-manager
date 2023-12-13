@@ -7,9 +7,12 @@ const authMiddleware = require('./middleware/authMiddleware');
 
 const app = express();
 app.use(bodyParser.json());
+const dbURI='mongodb+srv://xva:123456789As@cluster.pqrizug.mongodb.net/?retryWrites=true&w=majority';
 
 // Connect to MongoDB using mongoose
-mongoose.connect('mongodb://localhost:27017/taskDB', { useNewUrlParser: true, useUnifiedTopology: true });
+//mongoose.connect('mongodb://localhost:27017/taskDB', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true });
+
 
 // Middleware setup
 app.use(authMiddleware.verifyToken); // This line is critical to apply the middleware globally

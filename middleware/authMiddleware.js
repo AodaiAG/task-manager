@@ -4,16 +4,19 @@
 const jwt = require('jsonwebtoken');
 
 // Middleware function to verify JWT token
-function verifyToken(req, res, next) {
+function verifyToken(req, res, next)
+ {
   // Get the token from the request headers, query parameters, or cookies
   const token = req.headers['authorization'];
 
   // Check if token exists
-  if (!token) {
+  if (!token)
+   {
     return res.status(401).json({ message: 'Access denied. No token provided.' });
   }
 
-  try {
+  try
+   {
     // Verify the token
     const decoded = jwt.verify(token, 'your_secret_key'); // Replace 'your_secret_key' with your actual secret key
 
@@ -22,7 +25,8 @@ function verifyToken(req, res, next) {
 
     // Move to the next middleware or route handler
     next();
-  } catch (error) {
+  } catch (error)
+   {
     return res.status(401).json({ message: 'Invalid token.' });
   }
 }
