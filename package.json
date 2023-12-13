@@ -1,0 +1,19 @@
+{
+  "name": "task-management-api",
+  "version": "1.0.0",
+  "description": "A powerful task management API using Node.js and Express",
+  "main": "index.js",
+  "dependencies":
+   {
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.1.2",
+    "body-parser": "^1.19.0"
+  },
+  "scripts":
+   {
+    "start": "node index.js"
+  },
+  "author": "aodai",
+  "license": "MIT"
+}
