@@ -13,7 +13,7 @@ mongoose.connect('mongodb://localhost:27017/taskDB', { useNewUrlParser: true, us
 
 // Routes
 app.use('/user', userRoutes); // User routes for registration, login, etc.,kk 
-// just trying outm
+
 app.use('/tasks', authMiddleware.verifyToken, taskRoutes); // Task routes requiring authentication
 
 // Start server
