@@ -5,7 +5,7 @@ const taskController = require('../controllers/taskController');
 //taskRoutes.js: Defines routes related to tasks, such as creating, updating, deleting, or fetching tasks.
 
 router.get('/', taskController.getAllTasks);
-router.post('/', taskController.createTask);
+router.post('/create_task', taskController.createTask);
 router.put('/:taskId', taskController.updateTask);
 router.delete('/:taskId', taskController.deleteTask);
 

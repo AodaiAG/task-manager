@@ -1,7 +1,6 @@
 const Task = require('../models/taskModel');
 
 // Manages operations related to tasks, such as creating, updating, deleting, or fetching tasks.
-
 // Get all tasks
 async function getAllTasks(req, res)
  {
@@ -37,18 +36,21 @@ async function createTask(req, res)
 // Update a task by ID
 async function updateTask(req, res) 
 {
-  try {
+  try 
+  {
     const taskId = req.params.taskId; // Get the task ID from the request parameters
-    const { title, description, priority } = req.body; // Assuming title, description, priority are sent in the request body
+    const { title, description, priority} = req.body; // Assuming title, description, priority are sent in the request body
 
     // Find the task by ID and update its properties
     const updatedTask = await Task.findByIdAndUpdate(taskId, { title, description, priority }, { new: true });
 
-    if (!updatedTask) {
+    if (!updatedTask)
+     {
       return res.status(404).json({ message: 'Task not found' });
     }
-
+    
     res.status(200).json(updatedTask);
+
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Server Error' });
@@ -56,19 +58,24 @@ async function updateTask(req, res)
 }
 
 // Delete a task by ID
-async function deleteTask(req, res) {
-  try {
+async function deleteTask(req, res) 
+{
+  try 
+  {
     const taskId = req.params.taskId; // Get the task ID from the request parameters
-
     // Find the task by ID and delete it
     const deletedTask = await Task.findByIdAndDelete(taskId);
 
-    if (!deletedTask) {
+    if (!deletedTask) 
+    {
       return res.status(404).json({ message: 'Task not found' });
     }
 
     res.status(200).json(deletedTask);
-  } catch (error) {
+
+  }
+   catch (error) 
+  {
     console.error(error);
     res.status(500).json({ message: 'Server Error' });
   }

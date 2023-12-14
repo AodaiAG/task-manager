@@ -21,11 +21,10 @@ async function register(req, res)
     const newUser = new User({ username, password });
     await newUser.save();
 
-    // Generate JWT token
-    const token = jwt.sign({ username: newUser.username }, 'your_secret_key');
     
     // Return token and user data
-    res.status(201).json({ token, user: { id: newUser._id, username: newUser.username } });
+    
+    res.status(201).json({  user: { id: newUser._id, username: newUser.username } });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Server Error' });
@@ -41,7 +40,8 @@ async function login(req, res)
 
     // Check if the user exists
     const user = await User.findOne({ username });
-    if (!user) {
+    if (!user)
+    {
       return res.status(404).json({ message: 'User not found' });
     }
 
@@ -53,9 +53,10 @@ async function login(req, res)
     }
 
     // Generate JWT token
-    const token = jwt.sign({ username: user.username }, 'your_secret_key');
+    const token = jwt.sign({ username: user.username }, 'connectX');
 
     // Return token and user data
+    res.cookie('authorization', token);
     res.status(200).json({ token, user: { id: user._id, username: user.username } });
   } catch (error) {
     console.error(error);

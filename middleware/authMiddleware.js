@@ -13,8 +13,8 @@ function verifyToken(req, res, next)
     return next();
   }
   // Get the token from the request headers, query parameters, or cookies
-  const token = req.headers['authorization'];
-  
+  const token = req.cookies.authorization;
+
 
   // Check if token exists
   if (!token)
@@ -25,7 +25,7 @@ function verifyToken(req, res, next)
   try
    {
     // Verify the token
-    const decoded = jwt.verify(token, 'your_secret_key'); // Replace 'your_secret_key' with your actual secret key
+    const decoded = jwt.verify(token, 'connectX'); 
 
     // Attach the decoded payload to the request object for use in subsequent middleware or routes
     req.user = decoded;
@@ -38,6 +38,7 @@ function verifyToken(req, res, next)
   }
 }
 
-module.exports = {
+module.exports = 
+{
   verifyToken,
 };
