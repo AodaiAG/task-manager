@@ -27,7 +27,8 @@ async function createTask(req, res)
     await newTask.save();
 
     res.status(201).json(newTask);
-  } catch (error) {
+  } catch (error)
+   {
     console.error(error);
     res.status(500).json({ message: 'Server Error' });
   }

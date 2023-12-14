@@ -24,7 +24,7 @@ async function register(req, res)
     
     // Return token and user data
     
-    res.status(201).json({  user: { id: newUser._id, username: newUser.username } });
+    res.status(201).json('Registration completed successfully');
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Server Error' });
@@ -57,7 +57,7 @@ async function login(req, res)
 
     // Return token and user data
     res.cookie('authorization', token);
-    res.status(200).json({ token, user: { id: user._id, username: user.username } });
+    res.status(200).json('Welcome '+ username);
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Server Error' });

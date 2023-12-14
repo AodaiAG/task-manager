@@ -9,7 +9,7 @@ function verifyToken(req, res, next)
  
   if (req.originalUrl.startsWith('/api-docs/')||req.originalUrl.startsWith('/user/') )
    {
-    // Skip authentication for the Swagger UI route
+    // Skip authentication for the Swagger UI route(and user)
     return next();
   }
   // Get the token from the request headers, query parameters, or cookies
