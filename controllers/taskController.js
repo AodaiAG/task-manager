@@ -3,13 +3,13 @@ const jwt = require('jsonwebtoken');
 
 // Manages operations related to tasks, such as creating, updating, deleting, or fetching tasks.
 // Get all tasks
+//localhost:300/tasks : GET
 async function getAllTasks(req, res) 
 {
   try
    {
     // Get the username from the JWT token
     const issuedBy = getIssuedByFromRequest(req);
-
     // Fetch tasks associated with the current user's username
     const tasks = await Task.find({ issuedBy }); // Filter tasks by the 'issuedBy' field
     res.status(200).json(tasks);
@@ -21,6 +21,7 @@ async function getAllTasks(req, res)
 
 
 // Create a new task
+//localhost:300/tasks/create_task : POST
 async function createTask(req, res) 
 {
   try {
@@ -40,7 +41,7 @@ async function createTask(req, res)
 }
 
 
-// Update a task by ID
+// Update a task by ID :: //localhost:300/tasks/<taskId> : PUT
 async function updateTask(req, res) 
 {
   try 
@@ -65,7 +66,7 @@ async function updateTask(req, res)
 }
 
 
-// Delete a task by ID
+// Delete a task by ID : localhost:300/tasks/<taskId> : DELETE
 async function deleteTask(req, res) 
 {
   try 

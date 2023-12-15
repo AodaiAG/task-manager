@@ -3,7 +3,7 @@ const User = require('../models/userModel');
 
 // Handles user-related operations like user registration, login, etc.
 
-// Register a new user
+// Register a new user : //localhost:300/user/register POST
 async function register(req, res) 
 {
   try
@@ -31,7 +31,7 @@ async function register(req, res)
   }
 }
 
-// Login user and generate token
+// Login user and generate token : localhost:300/user/login POST
 async function login(req, res) 
 {
   try 
