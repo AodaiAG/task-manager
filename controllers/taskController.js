@@ -113,14 +113,16 @@ function getIssuedByFromRequest(req)
   }
 }
 
-async function verifyOwnership(req, taskId) {
+async function verifyOwnership(req, taskId)
+ {
   try {
     // Get the task by ID from the database
     const task = await Task.findById(taskId);
     const issuedBy = task.issuedBy; // Get the username who issued the task
     const username = getIssuedByFromRequest(req); // Get the username from the request
 
-    if (issuedBy !== username) {
+    if (issuedBy !== username) 
+    {
       throw new Error('You do not have permission to update this task');
     }
 
