@@ -46,6 +46,11 @@ async function updateTask(req, res)
 {
   try 
   {
+    const isOwner = await verifyOwnership(req, taskId);
+    if (!isOwner) {
+      return res.status(403).json({ message: 'You do not have permission to update this task' });
+    }
+
     const taskId = req.params.taskId; // Get the task ID from the request parameters
     const { title, description, priority} = req.body; // Assuming title, description, priority are sent in the request body
 
@@ -71,6 +76,10 @@ async function deleteTask(req, res)
 {
   try 
   {
+    const isOwner = await verifyOwnership(req, taskId);
+    if (!isOwner) {
+      return res.status(403).json({ message: 'You do not have permission to update this task' });
+    }
     const taskId = req.params.taskId; // Get the task ID from the request parameters
     // Find the task by ID and delete it
     const deletedTask = await Task.findByIdAndDelete(taskId);
@@ -103,5 +112,24 @@ function getIssuedByFromRequest(req)
     return null; // Return null if there's an error or token is invalid
   }
 }
+
+async function verifyOwnership(req, taskId) {
+  try {
+    // Get the task by ID from the database
+    const task = await Task.findById(taskId);
+    const issuedBy = task.issuedBy; // Get the username who issued the task
+    const username = getIssuedByFromRequest(req); // Get the username from the request
+
+    if (issuedBy !== username) {
+      throw new Error('You do not have permission to update this task');
+    }
+
+    return true; // User is the owner, grant permission
+  } catch (error) {
+    console.error(error);
+    return false; // Permission denied or error occurred
+  }
+}
+
 
 module.exports = { getAllTasks, createTask, updateTask, deleteTask };
